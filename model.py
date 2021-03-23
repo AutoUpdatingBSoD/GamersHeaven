@@ -17,7 +17,7 @@ import datetime
 from sklearn.preprocessing import StandardScaler
 def createReviewDF():
     path = "C:/users/unrea/Desktop/"
-    dfcols = ["Voted_Up", "Review", "Games_Owned_By_Reviewer", "Review_Count", "Votes_Up", "Votes_Funny",  "Recent_Playtime", "All_Time_Playtime", "received_for_free", "comment_count", "steam_purchase", "Written_During_Early_Access", "Created_On", "Updated_On", "created_day", "created_hour", "created_month", "created_second", "created_year", "created_minute", "updated_day", "updated_hour", "updated_minute", "updated_month", "updated_second", "updated_year"]
+    dfcols = ["Voted_Up", "Review","Games_Owned_By_Reviewer", "Review_Count", "Votes_Up", "Votes_Funny",  "Recent_Playtime", "All_Time_Playtime", "received_for_free", "comment_count", "steam_purchase", "Written_During_Early_Access", "Created_On", "Updated_On", "created_day", "created_hour", "created_month", "created_second", "created_year", "created_minute", "updated_day", "updated_hour", "updated_minute", "updated_month", "updated_second", "updated_year"]
     df = pd.DataFrame(columns = dfcols)
     icounter = 0
     resetIndex = 1
@@ -80,10 +80,10 @@ def createReviewDF():
             created_hour = int(time.strftime("%H", time.localtime(timestamp_created)))
             updated_hour = int(time.strftime("%H", time.localtime(timestamp_updated)))
             created_minute = int(time.strftime("%M", time.localtime(timestamp_created)))
-            updated_minute = int(time.strftime("%M", time.localtime(timestamp_updated)))
+            updated_minute = int(time.strftime("%M", time.localtime(timestamp_updated))) 
             created_second = int(time.strftime("%S", time.localtime(timestamp_created)))
             updated_second = int(time.strftime("%S", time.localtime(timestamp_updated)))  
-            df = df.append({"Voted_Up":voted_up, "Review":review, "Games_Owned_By_Reviewer":num_games_owned, "Review_Count":num_reviews,  "language":review_language,  "Votes_Up":votes_up, "Votes_Funny":votes_funny, "Recent_Playtime":owner_playtime_in_past_two_weeks, "All_Time_Playtime":owner_total_playtime_in_hours, "received_for_free":received_for_free, "comment_count":comment_count, "steam_purchase":steam_purchase, "Written_During_Early_Access":written_during_early_access, "Created_On":timestamp_created, "Updated_On":timestamp_updated, "created_day":created_day, "created_hour":created_hour, "created_month":created_month, "created_second":created_second, "created_year":created_year, "created_minute":created_minute, "updated_day":updated_day, "updated_hour":updated_hour, "updated_minute":updated_minute, "updated_month":updated_month, "updated_second":updated_second, "updated_year":updated_year}, ignore_index=True)
+            df = df.append({"Voted_Up":voted_up, "Review":review,"Games_Owned_By_Reviewer":num_games_owned, "Review_Count":num_reviews,    "Votes_Up":votes_up, "Votes_Funny":votes_funny, "Recent_Playtime":owner_playtime_in_past_two_weeks, "All_Time_Playtime":owner_total_playtime_in_hours, "received_for_free":received_for_free, "comment_count":comment_count, "steam_purchase":steam_purchase, "Written_During_Early_Access":written_during_early_access, "Created_On":timestamp_created, "Updated_On":timestamp_updated, "created_day":created_day, "created_hour":created_hour, "created_month":created_month, "created_second":created_second, "created_year":created_year, "created_minute":created_minute, "updated_day":updated_day, "updated_hour":updated_hour, "updated_minute":updated_minute, "updated_month":updated_month, "updated_second":updated_second, "updated_year":updated_year}, ignore_index=True)
         counter = counter + 1
         #icounter = icounter + 1
         #break
@@ -113,7 +113,7 @@ def main():
     print("nooo")
     print(reviewDF.head())
     # input image dimensions
-    x = reviewDF.iloc[:, range(2,27)]
+    x = reviewDF.iloc[:, range(2,26)]
     y = reviewDF.iloc[:, 0]
     z = reviewDF.iloc[:, 1]
     X_train, X_test, y_train, y_test = train_test_split(x, y, train_size=0.8, test_size=0.2, random_state=42, shuffle=True)
