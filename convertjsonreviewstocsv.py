@@ -84,35 +84,25 @@ def catchExceptionLoop(resetIndex, icounter, path, SteamAppDB):
                         sales_current_price = sale_object[l]['new'][0]
                         sales_cut = sale_object[l]['cut']
                         sales_current_date = sale_object[l]['at']
+                        headerrow=["Last_Price_Change", "Price_Cut", "Current_Price", "Old_Price", "Score", "Reviewer_Game_Count", "Review_Positive_Vote_Count", "Review_Funny_Vote_Count", "Owner_Playtime_Last_Two_Weeks", "Recieved_For_Free", "Review_Comment_Cou", "Purchased_On_Steam", "Early_Access_Review", "Unix_TImestamp_Created", "Unix_Timestamp_Updated", "DTO_Timestamp_Created", "DTO_Timestamp_Updated", "Day_Created_Int", "Hour_Created_Int", "Month_Created_Int", "Second_Created_Int", "Year_Created_Int", "Minute_Cre ated_Int", "Day_Updated_Int", "Hour_Updated_Int", "Month_Updated_Int", "Second_Updated_Int", "Year_Updated_Int", "Minute_Updated_Int"]
+                        rowcontents=[str(sales_current_date), str(sales_cut), str(sales_current_price), str(sales_previous_price), str(voted_up), str(owned_games), str(votes_up), str(votes_funny), str(owner_playtime_in_past_two_weeks), str(received_for_free), str(comment_count), str(steam_purchase), str(written_during_early_access), str(timestamp_created_dto), str(timestamp_updated_dto), str(timestamp_created), str(timestamp_updated), str(created_day), str(created_hour), str(created_month), str(created_second), str(created_year), str(created_minute), str(updated_day), str(updated_hour), str(updated_minute), str(updated_month), str(updated_second), str(updated_year)]
                         if l != 74:
                             if sales_current_date <= timestamp_created < sale_object[l+1]['at']:
-                                outname = reviewpath+'ReviewCSVs/ReviewGameID'+name+'RangeIs'+str(l)+'.csv'
-                                if not os.path.exists(outname):
-                                    Path(outname).touch()
-                                    with open(outname, 'w', encoding= 'utf-8', newline='') as csvfiletemp:
-                                        reviewwriter = csv.writer(csvfiletemp, delimiter=',', quotechar='\"', quoting=csv.QUOTE_MINIMAL)
-                                        reviewwriter.writerow(["Last_Price_Change", "Price_Cut", "Current_Price", "Old_Price" ,"Score", "Reviewer_Game_Count", "Review_Positive_Vote_Count", "Review_Funny_Vote_Count", "Owner_Playtime_Last_Two_Weeks", "Recieved_For_Free", "Review_Comment_Cou", "Purchased_On_Steam", "Early_Access_Review", "Unix_TImestamp_Created", "Unix_Timestamp_Updated", "DTO_Timestamp_Created", "DTO_Timestamp_Updated", "Day_Created_Int", "Hour_Created_Int", "Month_Created_Int", "Second_Created_Int", "Year_Created_Int", "Minute_Cre ated_Int", "Day_Updated_Int", "Hour_Updated_Int", "Month_Updated_Int", "Second_Updated_Int", "Year_Updated_Int", "Minute_Updated_Int"])
-                                    print("oh")
-                                with open(outname, 'a', encoding= 'utf-8', newline='') as csvfile:
-                                    reviewwriter = csv.writer(csvfile, delimiter=',', quotechar='\"', quoting=csv.QUOTE_MINIMAL)
-                                    reviewwriter.writerow([str(sales_current_date), str(sales_cut), str(sales_current_price), str(sales_previous_price), str(voted_up), str(owned_games), str(votes_up), str(votes_funny), str(owner_playtime_in_past_two_weeks), str(received_for_free), str(comment_count), str(steam_purchase), str(written_during_early_access), str(timestamp_created_dto), str(timestamp_updated_dto), str(timestamp_created), str(timestamp_updated), str(created_day), str(created_hour), str(created_month), str(created_second), str(created_year), str(created_minute), str(updated_day), str(updated_hour), str(updated_minute), str(updated_month), str(updated_second), str(updated_year)])
-                                print("wak")
+                                reaffirmjsondatematch(reviewpath+'ReviewCSVs/ReviewGameID'+name+'RangeIs'+str(l)+'.csv', headderrow, rowname)
                                 break
                         else:
                             if sales_current_date <= timestamp_created:
-                                outname = reviewpath+'ReviewCSVs/ReviewGameID'+name+'RangeIs'+str(l)+'.csv'
-                                if not os.path.exists(outname):
-                                    Path(outname).touch()
-                                    with open(outname, 'w', encoding= 'utf-8', newline='') as csvfiletemp:
-                                        reviewwriter = csv.writer(csvfiletemp, delimiter=',', quotechar='\"', quoting=csv.QUOTE_MINIMAL)
-                                        reviewwriter.writerow(["Last_Price_Change", "Price_Cut", "Current_Price", "Old_Price", "Score", "Reviewer_Game_Count", "Review_Positive_Vote_Count", "Review_Funny_Vote_Count", "Owner_Playtime_Last_Two_Weeks", "Recieved_For_Free", "Review_Comment_Cou", "Purchased_On_Steam", "Early_Access_Review", "Unix_TImestamp_Created", "Unix_Timestamp_Updated", "DTO_Timestamp_Created", "DTO_Timestamp_Updated", "Day_Created_Int", "Hour_Created_Int", "Month_Created_Int", "Second_Created_Int", "Year_Created_Int", "Minute_Cre ated_Int", "Day_Updated_Int", "Hour_Updated_Int", "Month_Updated_Int", "Second_Updated_Int", "Year_Updated_Int", "Minute_Updated_Int"])
-                                    print("oh")
-                                with open(outname, 'a', encoding= 'utf-8', newline='') as csvfile:
-                                    reviewwriter = csv.writer(csvfile, delimiter=',', quotechar='\"', quoting=csv.QUOTE_MINIMAL)
-                                    reviewwriter.writerow([str(sales_current_date), str(sales_cut), str(sales_current_price), str(sales_previous_price), str(voted_up), str(owned_games), str(votes_up), str(votes_funny), str(owner_playtime_in_past_two_weeks), str(received_for_free), str(comment_count), str(steam_purchase), str(written_during_early_access), str(timestamp_created_dto), str(timestamp_updated_dto), str(timestamp_created), str(timestamp_updated), str(created_day), str(created_hour), str(created_month), str(created_second), str(created_year), str(created_minute), str(updated_day), str(updated_hour), str(updated_minute), str(updated_month), str(updated_second), str(updated_year)])
-                                print("wak")
+                                reaffirmjsondatematch(reviewpath+'ReviewCSVs/ReviewGameID'+name+'RangeIs'+str(l)+'.csv', headderrow, rowname)
                                 break
         icounter = icounter + 1
         print("Done")
-
+def reaffirmjsondatematch(outname, headerrow, rowname):
+    if not os.path.exists(outname):
+        Path(outname).touch()
+        writetocsv(headerrow)
+    writetocsv(rowname)
+def writetocsv(rowcontents):
+    with open(outname, 'a', encoding= 'utf-8', newline='') as csvfile:
+        reviewwriter = csv.writer(csvfile, delimiter=',', quotechar='\"', quoting=csv.QUOTE_MINIMAL)
+        reviewwriter.writerow(rowcontents)
 catchExceptionLoop(resetIndex, icounter, path, SteamAppDB)
