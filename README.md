@@ -74,6 +74,7 @@
 - I concluded that there's two key relations found with this project:
     - As Price metrics go down, Steam review scores go up. and Vice versa. This is the original hypothesis that was intended to be tested for.
     - As Review scores go down, Steam Community Interaction Goes Up and vice versa. This phenominon, for those unfamiliar with internet lingo, is known as a ratio, and typically happens when something has been messed up.
+    - How much interaction a reviewer has with the game at the time of the review record has little if any bearing on the review score.
  
  - What do these two facts together mean?
     - If your game is being ratioed and you don't want to give up on developing the game, first of all fix what people are upset about (obviously), but also cut the price of the game to generate positive buzz about the game, and bring in new players over time to generate revenue you would have just completely lost otherwise.
