@@ -1,6 +1,6 @@
 ######################################################
 #                                                    #
-#       Program Name: steamhttpgetreviewscraper\      #
+#       Program Name: steamhttpgetreviewscraper      #
 #           - Original Author:      Michael Hammond  #
 #           - Edited by:            Michael Hammond  #
 #           - Date Created:         3/22/21          #
