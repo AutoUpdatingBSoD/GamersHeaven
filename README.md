@@ -54,7 +54,7 @@
    - booster set to GBLinear. Initially this made my model perform terribly, until I set the scale weight to fit my data weight. I'd recommend keeping this just in case.
 
 
-- NVIDIA CUDA 10.1 Compatibility *STRONGLY RECOMMENDED*!!! *CODE MAY NUKE YOUR MACHINE BY DEFAULT IF YOU DON'T HAVE CUDA INSTALLED!!!*
+- NVIDIA CUDA Compatibility *STRONGLY RECOMMENDED*!!! *CODE MAY NUKE YOUR MACHINE BY DEFAULT IF YOU DON'T HAVE CUDA INSTALLED!!!*
   - Tree method set to GPU_Hist and gpu_id=0. This is what enabled GPU support on my machine.
 - Anaconda Version Control
   - Visual Studio Code
