@@ -39,7 +39,7 @@
    
    - Double the hashing bins. (512 rather than 256.) Added since CUDA is supported, decrease if needed.
    
-   - Subsample of .5 (1/2)  "Setting this to.5 means that XGBoost would randomly sample half of the training data prior to growing trees." - From the XGBoost Docs on Python
+   - Subsample of .5 (1/2)  "Setting this to 0.5 means that XGBoost would randomly sample half of the training data prior to growing trees." - From the XGBoost Docs on Python
    
    - Data weight of .36  (my dataset was roughly 36 falses to 100 trues, yours might be different so adjust here first.
    
