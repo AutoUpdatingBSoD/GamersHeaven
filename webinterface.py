@@ -43,32 +43,17 @@ def createresultsdf():
     # The amount of times to run the model for each independent variable set.
 
     # To ensure accuracy with the model, do the below steps n number of times
-    for i in range(0, n):
-        
-        # Query the ith results table, execute and commit.
-        query = ("SELECT "
-        "correlation_type,"
-        "accuracy from results"+str(i)+" "
-        "ORDER BY accuracy DESC")
-        cursor.execute(query)
-        conn.commit()
-        # if this is the first table being queried:
-        if (i == 0):
-            # Add each item queried to the dataframe.
-            for (correlation_type, accuracy) in cursor:
-                df = df.append({'Categories':correlation_type,"Accuracy":accuracy}, ignore_index=True)
+    # Query the results table, execute and commit.
+    query = ("SELECT "
+    "correlation_type,"
+    "accuracy from trainedresults "
+    "ORDER BY accuracy DESC")
+    cursor.execute(query)
+    conn.commit()
+    for (correlation_type, accuracy) in cursor:
+        result_df = result_df.append({'Categories':correlation_type,"Accuracy":accuracy}, ignore_index=True)
         # if this is not the first table being queried:
-        else:
-            # create a temporary dataframe with the same column structure as before.
-            temp_df = pd.DataFrame(columns=result_df_cols)
-            # Append the new items to the temporary DataFrame
-            for (correlation_type, accuracy) in cursor:
-                temp_df = temp_df.append(
-                    {'Categories':correlation_type,"Accuracy":accuracy}, ignore_index=True)
-            # Average each item in the accuracy column of both DataFrames, and set each value as the result DataFrame accuracy values.
-            for j in range(0,2):
-                result_df['Accuracy'][j] = (result_df['Accuracy'][j]+temp_df['Accuracy'][j])/2
-    # close the cursor and connection for safety 
+        # close the cursor and connection for safety 
     cursor.close()
     conn.close()
     # return the averaged result DataFrame.
