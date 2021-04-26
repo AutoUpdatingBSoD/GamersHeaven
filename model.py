@@ -43,7 +43,7 @@ import warnings
 #   and import them into a Pandas DataFrame
 #
 #   params:
-#           - None, but you will need a MySQL Connection with data already loaded
+#           - None, but you will need a MySQL Host with data already loaded
 #
 #   return: 
 #           - df : Pnadas DataFrame Containing Data Ready to be Trained.
