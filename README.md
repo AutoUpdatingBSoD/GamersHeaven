@@ -8,8 +8,6 @@ This project is not associated with the mom and pop video game store of a nearly
 It is too late in the project development cycle to change the GitHub repository name for this, because this repository link has been cited in the paper for the presentation and changing it would break the link for the work done.
 
 ---------------------------------------------
-
----------------------------------------------
   What is GamersHeaven?
 ---------------------------------------------
 
