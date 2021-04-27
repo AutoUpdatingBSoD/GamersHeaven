@@ -1,5 +1,13 @@
 # GamersHeaven
+---------------------------------------------
+DISCLAIMER
+---------------------------------------------
 
+This project is not associated with the mom and pop video game store of a nearly identical name, [Gamer's Heaven](https://www.gamersheaven.life/). The name devised for this project was intended for when this project had a different purpose and is not in any way meant to infringe upon the rights of or divert attention from the Arizona brick and mortar location of the same name. The project creator is a firm believer in preservation of older technology and believes that those in the Pheonixville area or browsing online should consider this store as a viable source for obtaining legitimate physical copies of older games and gaming hardware.
+
+It is too late in the project development cycle to change the GitHub repository name for this, because this repository link has been cited in the paper for the presentation and changing it would break the link for the work done.
+
+---------------------------------------------
 
 ---------------------------------------------
   What is GamersHeaven?
